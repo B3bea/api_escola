@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ImportacaoController;
+use App\Http\Controllers\Api\TurmaController;
 
 // // Nova rota na raiz da API para verificar se o servidor está no ar.
 // Route::get('/', function () {
@@ -17,4 +18,10 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::post('/importar/alunos', [ImportacaoController::class, 'importarAlunos']);
+
+    Route::post('/importar/professores', [ImportacaoController::class, 'importarProfessores']);
+    
+    Route::post('/importar/turmas', [ImportacaoController::class, 'importarTurmas']);
+    
+    Route::post('/turmas/{turma}/adicionar-alunos', [TurmaController::class, 'adicionarAlunos']);
 });
